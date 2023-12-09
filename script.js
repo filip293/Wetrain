@@ -4,13 +4,13 @@ import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.
 
 // Initialize Firebase with your configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAuT3vlvLVdOuBZk3dR7tAPvTGF7O5WAEk",
-  authDomain: "weatherstation-bbcb.firebaseapp.com",
-  databaseURL: "https://weatherstation-bbcb-default-rtdb.firebaseio.com",
-  projectId: "weatherstation-bbcb",
-  storageBucket: "weatherstation-bbcb.appspot.com",
-  messagingSenderId: "481270771926",
-  appId: "1:481270771926:web:d7df43fb95f82a872f1977"
+    apiKey: "AIzaSyAuT3vlvLVdOuBZk3dR7tAPvTGF7O5WAEk",
+    authDomain: "weatherstation-bbcb.firebaseapp.com",
+    databaseURL: "https://weatherstation-bbcb-default-rtdb.firebaseio.com",
+    projectId: "weatherstation-bbcb",
+    storageBucket: "weatherstation-bbcb.appspot.com",
+    messagingSenderId: "481270771926",
+    appId: "1:481270771926:web:d7df43fb95f82a872f1977"
   };
   const app = initializeApp(firebaseConfig);
 
@@ -44,5 +44,5 @@ onValue(humidity4x1Ref, function(snapshot) {
 // Function to update circular chart and percentage text
 function updateCircularChart(pathElement, textElement, dataValue) {
     pathElement.setAttribute("stroke-dasharray", `${dataValue}, 100`);
-    textElement.textContent = `${dataValue}%`;
+    textElement.textContent = `${dataValue}`;
 }
