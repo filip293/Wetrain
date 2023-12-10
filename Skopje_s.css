@@ -1,4 +1,5 @@
 
+
 .Image {
   width: 100%;
   height: 60%;
@@ -42,6 +43,17 @@
   font-size: 60px;
   font-family: 'Segoe UI';
 }
+
+circle {
+  position: relative;
+  z-index: 6;
+  fill: none;
+  stroke: #2ecc71;
+  stroke-width: 29;
+  stroke-linecap: round;
+ }
+
+
 .Temperature {
   position: absolute;
   z-index: 5;
@@ -62,7 +74,7 @@
   width: 450px;
   left: -10%;
   top: 70%;
-  background-color: #012120;
+  background-color: #012120; /* Fixed color */
 }
 
 .circle {

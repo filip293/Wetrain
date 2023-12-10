@@ -15,6 +15,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+let progressCircle = document.getElementById('progressCircle');
+let radius = progressCircle.getAttribute('r');
+let circumference = 2 * Math.PI * radius;
+
 // Reference to your data in the database for Temperature
 var temperatureRef = ref(getDatabase(), "Temperature1");
 var himidityRef = ref(getDatabase(), "Humidity1");
@@ -27,7 +31,16 @@ var humidityElement = document.getElementById("humidityValue");
 onValue(temperatureRef, (snapshot) => {
   const temperatureValue = snapshot.val();
   temperatureElement.textContent = temperatureValue; // Update the HTML with the new temperature value
+
+  // Set progress based on temperature value
+  setProgress(temperatureValue + 15);
 });
+
+function setProgress(temperatureValue) {
+  // Assuming temperatureValue is a percentage between 0 and 100
+  let offset = circumference - (temperatureValue / 100) * circumference;
+  progressCircle.style.strokeDashoffset = offset;
+}
 
 onValue(himidityRef, (snapshot) => {
   const humidityValue = snapshot.val();

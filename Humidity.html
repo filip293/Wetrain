@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <img src="Skopje.jpg" class="Image"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
     <title>Wetrain</title>
     <link rel="shortcut icon" href="logo.png">
     <link rel=stylesheet type="text/css" href="Skopje_s.css">
@@ -13,10 +14,12 @@
 </head>
 <body>
   <h1 class="City">Skopje</h1>
-  
   <div class="circle1">
     <p class="Temperature"  id="temperatureValue">20</p>
     <p class="Cels">°C</p>
+    <svg overflow="visible">
+      <circle id="progressCircle" r="185" cx="200" cy="-100" transform="rotate(90 50 50)" style="stroke-dasharray: 1162.38928183; stroke-dashoffset: 0;"></circle>
+     </svg>
     <div class="rectangle"></div>
     <div class="circle">
   </div>
