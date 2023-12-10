@@ -1,0 +1,128 @@
+
+.Image {
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Set a lower z-index to place it below the circular chart */
+}
+
+.City {
+  position: absolute;
+  z-index: 1;
+  font-weight: bold;
+  font-size: 180px;
+  font-family: 'Segoe UI';
+  top: 4%;
+  left: 50%;
+  opacity: 0.7;
+}
+
+
+.circle1 {
+  position: absolute;
+  z-index: 1;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  left: 10%;
+  top: 25%;
+  background-color: rgba(36, 149, 73, 0.7);
+}
+
+.Cels {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  top: 10%;
+  left: 70%;
+  font-weight: bold;
+  font-size: 60px;
+  font-family: 'Segoe UI';
+}
+.Temperature {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  top: 12%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 140px;
+  font-family: 'Segoe UI';
+}
+
+.rectangle {
+  position: absolute;
+  z-index: 4;
+  height: 150px;
+  width: 450px;
+  left: -10%;
+  top: 70%;
+  background-color: #012120;
+}
+
+.circle {
+  position: absolute;
+  z-index: 3;
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  background-color: #25845A;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle3 {
+  position: absolute;
+  z-index: 1;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  left: 5%;
+  top: 65%;
+  background-color: rgba(36, 149, 73, 0.7);
+}
+
+.circle2 {
+  position: absolute;
+  z-index: 3;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  background-color: #25845A;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.HumPres {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Segoe UI';
+}
+
+.Humidity{
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  top:17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 65px;
+  font-family: 'Segoe UI';
+}
