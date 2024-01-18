@@ -14,7 +14,7 @@
   z-index: 1;
   font-weight: bold;
   font-size: 180px;
-  font-family: 'Segoe UI';
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   top: 4%;
   left: 50%;
   opacity: 0.7;
@@ -32,17 +32,6 @@
   background-color: rgba(36, 149, 73, 0.7);
 }
 
-.Cels {
-  position: absolute;
-  z-index: 5;
-  text-align: center;
-  color: white;
-  top: 10%;
-  left: 70%;
-  font-weight: bold;
-  font-size: 60px;
-  font-family: 'Segoe UI';
-}
 
 circle {
   position: relative;
@@ -54,17 +43,28 @@ circle {
  }
 
 
+ .vertical-line {
+  position: absolute;
+  border-left: 1px solid #035F50;
+  height: 30%;
+  left: 20%;
+  top: 60%;
+  transform: translateX(-50%);
+}
+
+
+
 .Temperature {
   position: absolute;
   z-index: 5;
   text-align: center;
   color: white;
-  top: 12%;
-  left: 47%;
+  top: 14%;
+  left: 52%;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  font-size: 140px;
-  font-family: 'Segoe UI';
+  font-size: 110px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .rectangle {
@@ -113,6 +113,30 @@ circle {
 }
 
 
+.circle5 {
+  position: absolute;
+  z-index: 1;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  left: 25%;
+  top: 65%;
+  background-color: rgba(36, 149, 73, 0.7);
+}
+
+.circle4 {
+  position: absolute;
+  z-index: 3;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  background-color: #25845A;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 .HumPres {
   position: absolute;
   z-index: 5;
@@ -123,7 +147,7 @@ circle {
   transform: translate(-50%, -50%);
   font-weight: bold;
   font-size: 40px;
-  font-family: 'Segoe UI';
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .Humidity{
@@ -136,5 +160,5 @@ circle {
   transform: translate(-50%, -50%);
   font-weight: bold;
   font-size: 65px;
-  font-family: 'Segoe UI';
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

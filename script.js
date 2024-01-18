@@ -22,15 +22,17 @@ let circumference = 2 * Math.PI * radius;
 // Reference to your data in the database for Temperature
 var temperatureRef = ref(getDatabase(), "Temperature1");
 var himidityRef = ref(getDatabase(), "Humidity1");
+var pressureRef = ref(getDatabase(), "Pressure1");
 
 // Get the HTML element to update
 var temperatureElement = document.getElementById("temperatureValue");
 var humidityElement = document.getElementById("humidityValue");
+var pressureElement = document.getElementById("pressureValue");
 
 // Listen for changes in the Temperature data
 onValue(temperatureRef, (snapshot) => {
   const temperatureValue = snapshot.val();
-  temperatureElement.textContent = temperatureValue; // Update the HTML with the new temperature value
+  temperatureElement.innerHTML = `${temperatureValue}<sup>°</sup>`; // Update the HTML with the new temperature value
 
   // Set progress based on temperature value
   setProgress(temperatureValue + 15);
@@ -43,6 +45,15 @@ function setProgress(temperatureValue) {
 }
 
 onValue(himidityRef, (snapshot) => {
-  const humidityValue = snapshot.val();
-  humidityElement.textContent = humidityValue + '%'; // Update the HTML with the new temperature value
+  let humidityValue = snapshot.val();
+  humidityValue = Math.min(humidityValue, 100);
+  humidityElement.textContent = humidityValue + '%'; // Update the HTML with the new humidity value
+});
+
+
+
+onValue(pressureRef, (snapshot) => {
+  const pressureValue = snapshot.val();
+  let pressure = parseInt(pressureValue / 100);
+  pressureElement.textContent = pressure; // Update the HTML with the new humidity value
 });
