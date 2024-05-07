@@ -135,14 +135,3 @@
 
     }
 }
-
-@media (prefers-color-scheme: light) {
-    .BG {
-        background-color: #ffffff; /* Set default background color */
-      }
-
-      .City_TXT{
-        color: #0b131e;
-    }
-
-}
