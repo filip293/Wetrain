@@ -198,7 +198,7 @@
     }
 }
 
-@media screen and (max-width: 500px) and (max-height: 900px) {
+@media screen and (max-width: 500px) and (max-height: 700px) {
     /* Ensure styles stay the same as max-height 1000px */
     .Temperature {
         font-size: 10vw; /* Maintain the same font size */
