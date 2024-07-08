@@ -1,4 +1,4 @@
-.City_TXT{
+.City_TXT {
     position: absolute;
     width: 40%; /* Adjust the width as a percentage of the viewport width */
     height: auto; /* Automatically adjust the height to maintain the aspect ratio */
@@ -9,20 +9,43 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.Forcast{
+.Forcast {
     position: absolute;
     width: 25%;
     height: auto;
     left: 30%;
     top: 0%;
+}
 
+.HumidityIco {
+    position: absolute;
+    z-index: 1;
+    left: 5%;
+    top: 4vw;
+    width: 4%;
+    height: auto;
+}
+
+.HumidityTXT {
+    position: absolute;
+    z-index: 1;
+    left: 10%;
+    top: 3vw;
+    font-size: 1.5vw;
+    color: #f0f1f1;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    opacity: 0.7;
 }
 
 .Humidity {
     position: absolute;
-    left: 15%;
-    top: calc(22% + 3vw);
+    z-index: 1;
+    left: 9%;
+    top: 4vw;
     font-size: 3vw;
+    text-align: center;
     color: #f0f1f1;
     white-space: nowrap;
     font-family: Arial, Helvetica, sans-serif;
@@ -31,7 +54,7 @@
 
 .BG {
     background-color: #0b131e; /* Set default background color */
-  }
+}
 
 .Temperature {
     position: absolute;
@@ -54,18 +77,33 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.Info{
-    position: absolute;
+/* Container for PC */
+.Info {
+    position: relative; /* Set position relative */
     width: 50%;
     height: 45vh;
     background-color: #202b3b;
     margin: 2%;
     border-radius: 20px;
-    left: 33%; /* Set left to 50% to center horizontally */
-    top: 70%; /* Set top to 50% to center vertically */
-    transform: translate(-50%, -50%); /* Move the menu back by half its width and height */
+    left: 33%;
+    top: 70%;
+    transform: translate(-50%, 92%);
+    opacity: 1;
 }
 
+/* Container for Phone */
+.InfoForPhone {
+    position: relative; /* Set position relative */
+    width: 41%;
+    height: 17vh;
+    background-color: #202b3b;
+    margin: 2%;
+    border-radius: 20px;
+    transform: translate(5%, 240%);
+    display: none;
+}
+
+/* Vertical Menu */
 .Menu {
     position: absolute;
     width: 6%;
@@ -73,65 +111,127 @@
     background-color: #202b3b;
     margin: 2%;
     border-radius: 20px;
-    left: 3%; /* Set left to 50% to center horizontally */
-    top: 46%; /* Set top to 50% to center vertically */
-    transform: translate(-50%, -50%); /* Move the menu back by half its width and height */
+    left: 3%;
+    top: 46%;
+    transform: translate(-50%, -50%);
 }
 
+/* Background Image */
 .BGimage img {
     position: absolute;
-    width: 40%; /* Adjust the width as a percentage of the viewport width */
-    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    width: 40%;
+    height: auto;
     left: 30%;
     top: 5%;
     background-color: transparent;
     border: none;
 }
 
+/* City Image */
 .City img {
     position: absolute;
-    width: 40%; /* Adjust the width as a percentage of the viewport width */
-    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    width: 40%;
+    height: auto;
     left: 30%;
     top: 25%;
     color: transparent;
     border: none;
 }
 
-
+/* Media Query for Small Screens */
 @media screen and (max-width: 600px) and (max-height: 1000px) {
     .Menu {
         display: none;
     }
-    .Info{
-        position: absolute;
-        width: 80%;
-        transform: translate(-31%, -50%); /* Move the menu back by half its width and height */
-    }
     .Temperature {
         position: absolute;
-        left: 52%; /* Adjust the left position to center horizontally */
-        transform: translateX(-50%); /* Center horizontally */
-        top: calc(35% + 3vw);
+        left: 52%;
+        transform: translateX(-50%);
+        top: calc(35% + 1vw);
         font-size: 10vw;
-        text-align: center; /* Center text within the container */
-        display: inline-block; /* Ensure the container takes up only the necessary width */
+        text-align: center;
+        display: inline-block;
     }
     .chanceOfRain {
         left: 38%;
-        top: calc(5% + 3vw);
+        top: calc(5% + 10vw);
         font-size: 3vw;
     }
     .City_TXT {
-        font-size: 10vw; /* Adjust as needed */
+        font-size: 10vw;
         left: 35%;
-        top: -3%;
+        top: 0%;
     }
-    .Forcast{
+    .Forcast {
         width: 60%;
         height: auto;
         left: 20%;
         top: calc(5% + 3vw);
-
     }
+
+    .HumidityIco {
+        left: 15%;
+        top: 6vw;
+        width: 10%;
+    }
+    
+    .HumidityTXT {
+        left: 30%;
+        top: 2vw;
+        font-size: 4vw;
+    }
+    
+    .Humidity {
+        left: 28%;
+        top: 30%;
+        font-size: 7vw;
+    }
+
+    .Info {
+        display: none;
+    }
+
+    .InfoForPhone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 500px) and (max-height: 900px) {
+    /* Ensure styles stay the same as max-height 1000px */
+    .Temperature {
+        font-size: 10vw; /* Maintain the same font size */
+    }
+    .chanceOfRain {
+        left: 190px;
+        top: 95px;
+        font-size: 15px; /* Maintain the same font size */
+    }
+    .City_TXT {
+        font-size: 10vw; /* Maintain the same font size */
+    }
+    .Forcast {
+        width: 60%;
+        left: 20%;
+        top: 60px;
+    }
+    .Temperature {
+        top: 320px;
+    }
+    .Humidity {
+        font-size: 7vw; /* Maintain the same font size */
+    }
+    .InfoForPhone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 430px;
+        left: 17px;
+        transform: none;
+        width: 40%;
+        height: 150px;
+    }
+    
 }

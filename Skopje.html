@@ -2,10 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="shortcut icon" href="wetrainn.png" type="image/x-icon" />
+        <link rel="icon" href="wetrainn.png" type="image/x-icon" />
         <meta name="color-scheme" content="light only">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wetrain</title>
+        <meta name="description" content="Track weather information for Skopje from my diy weather stations.">
+        <title>Wetrain Skopje</title>
         <link rel=stylesheet type="text/css" href="Skopje.css">
         <body class="BG">
         <script type="module" src="Skopje.js"></script>
@@ -24,7 +25,19 @@
     <div class="Sunrise" id="sunrise-time"></div>
     <div class="Sunset" id="sunset-time"></div>
     
-    <p class="Humidity"  id="humidityValue"></p>
+    <div class="Info">
+        <img src="Humidity.png" class="HumidityIco"/>
+        <p class="Humidity" id="humidityValuePC"></p>
+        <p class="HumidityTXT">Humidity</p>
+    </div>
+
+    <div class="InfoForPhone">
+        <img src="Humidity.png" class="HumidityIco"/>
+        <p class="Humidity" id="humidityValuePhone"></p>
+        <p class="HumidityTXT">Humidity</p>
+    </div>
+
+
     <p class="Pressure"  id="pressureValue"></p>
 
 
@@ -44,8 +57,7 @@
     </div>
 
 
-    <div class="Info"></div>
-
+    
     
 </body>
 </html>
