@@ -208,7 +208,10 @@
     }
     .BG {
         background: linear-gradient(to bottom right, #333e6b, #566096);
-        height: 98vh;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+        overflow:hidden
     }
     .Temperature {
         position: absolute;
