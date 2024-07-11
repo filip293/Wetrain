@@ -10,6 +10,7 @@
         <link rel=stylesheet type="text/css" href="Skopje.css">
         <body class="BG">
         <script type="module" src="Skopje.js"></script>
+        <script src="https://momentjs.com/downloads/moment.min.js"></script>
     </head>
 <body>
 
@@ -22,13 +23,19 @@
     <img class="Forcast" id="weather-image" src="" alt="Weather Image" class="WeatherImage">
 
     <div id="weather-description"></div>
-    <div class="Sunrise" id="sunrise-time"></div>
-    <div class="Sunset" id="sunset-time"></div>
-    
+      
+
     <div class="Info">
         <img src="Humidity.png" class="HumidityIco"/>
         <p class="Humidity" id="humidityValuePC"></p>
         <p class="HumidityTXT">Humidity</p>
+        <div class="sun-moon-container">
+            <div class="Sunrise" id="sunrise-time"></div>
+            <div class="Sunset" id="sunset-time"></div>
+            <div class="sun"></div>
+            <div class="moon"></div>
+            <div class="line"></div>
+        </div>
     </div>
 
     <div class="InfoForPhone">
@@ -39,6 +46,7 @@
 
 
     <p class="Pressure"  id="pressureValue"></p>
+    <p class="FeelsLike"  id="feelsLikeValue"></p>
 
 
     

@@ -22,6 +22,9 @@ const temperatureElement = document.getElementById("temperatureValue");
 const humidityElementPC = document.getElementById("humidityValuePC");
 const humidityElementPhone = document.getElementById("humidityValuePhone");
 const pressureElement = document.getElementById("pressureValue");
+const feelsLikeElement = document.getElementById("feelsLikeValue");
+
+let lastHumidityValue = null;
 
 function updateHumidityStyles() {
     const isPhone = window.innerWidth <= 600;
@@ -41,18 +44,53 @@ function updateHumidityStyles() {
     }
 }
 
+function calculateFeelsLike(T, RH) {
+    var T_F = (T * 9/5) + 32;
+    var c1 = -42.379, c2 = 2.04901523, c3 = 10.14333127, c4 = -0.22475541;
+    var c5 = -6.83783e-3, c6 = -5.481717e-2, c7 = 1.22874e-3, c8 = 8.5282e-4, c9 = -1.99e-6;
+
+    var HI_F = c1 + (c2 * T_F) + (c3 * RH) + (c4 * T_F * RH) +
+               (c5 * T_F * T_F) + (c6 * RH * RH) +
+               (c7 * T_F * T_F * RH) + (c8 * T_F * RH * RH) +
+               (c9 * T_F * T_F * RH * RH);
+
+    var HI_C = (HI_F - 32) * 5/9;
+
+    return Math.round(HI_C);
+}
+
 onValue(temperatureRef, (snapshot) => {
     const temperatureValue = snapshot.val();
-    temperatureElement.innerHTML = `${temperatureValue}<sup>°</sup>`;
+    temperatureElement.innerHTML = `${temperatureValue}<sup>°C</sup>`;
+    calculateAndDisplayFeelsLike();
 });
 
 onValue(humidityRef, (snapshot) => {
     let humidityValue = snapshot.val();
+    
     humidityValue = Math.min(humidityValue, 100);
+
+    if (lastHumidityValue !== null && lastHumidityValue < 90 && humidityValue >= 100) {
+        return;
+    }
+
+    lastHumidityValue = humidityValue;
+
     humidityElementPC.textContent = humidityValue + '%';
     humidityElementPhone.textContent = humidityValue + '%';
     updateHumidityStyles();
+    calculateAndDisplayFeelsLike();
 });
+
+function calculateAndDisplayFeelsLike() {
+    const temperatureValue = parseFloat(temperatureElement.textContent);
+    const humidityValue = parseFloat(humidityElementPC.textContent);
+
+    if (!isNaN(temperatureValue) && !isNaN(humidityValue)) {
+        const feelsLike = calculateFeelsLike(temperatureValue, humidityValue);
+        feelsLikeElement.innerHTML = `${feelsLike}<sup>°C</sup>`;
+    }
+}
 
 onValue(pressureRef, (snapshot) => {
     const pressureValue = snapshot.val();
@@ -84,8 +122,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
         const sunsetTime = new Date(sunsetTimestamp).toLocaleTimeString();
 
         weatherDescriptionContainer.innerHTML = `Weather: ${weatherDescription}`;
-        sunriseTimeContainer.innerHTML = `Sunrise: ${sunriseTime}`;
-        sunsetTimeContainer.innerHTML = `Sunset: ${sunsetTime}`;
+        sunriseTimeContainer.innerHTML = `${sunriseTime}`;
+        sunsetTimeContainer.innerHTML = `${sunsetTime}`;
         chanceOfRainContainer.innerHTML += `<br>Chance of Rain: ${chanceOfRain}%`;
 
         const currentTime = new Date().getTime();
@@ -117,5 +155,37 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
         }
 
         weatherImage.src = svgPath;
+
+        // Calculate percentage of day and night passed
+        const sunrise = moment(sunriseTimestamp);
+        const sunset = moment(sunsetTimestamp);
+        const now = moment();
+
+        let dayPercentage = 0;
+        let nightPercentage = 0;
+
+        if (isDaytime) {
+            const totalDaytime = sunset.diff(sunrise);
+            const elapsedDaytime = now.diff(sunrise);
+            dayPercentage = (elapsedDaytime / totalDaytime) * 100;
+        } else {
+            const totalNighttime = moment(sunriseTimestamp + 86400000).diff(sunset); // Next day's sunrise
+            const elapsedNighttime = now.isBefore(sunrise) ? now.diff(sunset.clone().subtract(1, 'days')) : now.diff(sunset);
+            nightPercentage = (elapsedNighttime / totalNighttime) * 100;
+        }
+        const sunElement = document.querySelector('.sun');
+        const moonElement = document.querySelector('.moon');
+        sunElement.style.left = `${dayPercentage.toFixed(2)}%`;
+        moonElement.style.left = `${nightPercentage.toFixed(2)}%`;
+        console.log(`${dayPercentage.toFixed(2)}`)
+
+        if(`${dayPercentage.toFixed(2)}` == 0.00){
+            sunElement.style.display = "none";
+            moonElement.style.display = "block";
+        }else{
+            sunElement.style.display = "block";
+            moonElement.style.display = "none";
+        }
+
     })
     .catch(error => console.error("Error fetching weather data:", error));

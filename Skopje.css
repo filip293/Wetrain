@@ -86,17 +86,60 @@
     margin: 2%;
     border-radius: 20px;
     left: 33%;
-    top: 70%;
     transform: translate(-50%, 92%);
     opacity: 1;
 }
+  
+.line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 2px;
+    width: 95%;
+    background-color: #ffffff;
+}
+  
+.sun-moon-container {
+    position: relative;
+    width: 64%;
+    height: 80px;
+    top: calc(50% + 6vw);
+    left: 9vw;
+    overflow: hidden;
+}
+.sun {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle at 50% 50%, #fffacd, #ffd700, #ff8c00); /* Sun gradient */
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.6); /* Glow effect */
+    top: 30%;
+    left: 0%;
+    z-index: 1;
+}
 
-/* Container for Phone */
+  
+  .moon {
+    position: absolute;
+    top: 25px;
+    left: 0%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255), rgba(200, 200, 200, 0.9) 70%, rgba(150, 150, 150, 0.6) 85%, transparent 100%); /* Enhanced moon gradient */
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Glow effect */
+    z-index: 1;
+}
+
+
+
 .InfoForPhone {
     position: relative; /* Set position relative */
     width: 41%;
     height: 17vh;
-    background-color: #202b3b;
+    background-color:rgba(32, 43, 59, 0.3);
     margin: 2%;
     border-radius: 20px;
     transform: translate(5%, 240%);
