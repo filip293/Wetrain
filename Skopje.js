@@ -113,7 +113,7 @@ onValue(batteryRef, (snapshot) => {
 
 onValue(hourRef, (snapshot) => {
     const hourValue = snapshot.val();
-    hourElement.textContent = hourValue;
+    hourElement.textContent = `Last Updated: ${hourValue}`;
 });
 
 onValue(minuteRef, (snapshot) => {
