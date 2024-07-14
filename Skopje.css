@@ -179,6 +179,73 @@
     border: none;
 }
 
+.AdditionalInfo {
+    border: 1px;
+    border-radius: 20px;
+    float: right;
+    margin-right: 3%;
+    width: 33vw;
+    height: 44vh;
+}
+
+.Weather-Desc{
+    border: 1px;
+    background-color: #202b3b;
+    border-radius: 20px;
+    width: 29vw;
+    height: 11vh;
+    margin-left: 2vw;
+    align-content: center;
+}
+
+.Battery{
+    float: left;
+    border: 1px;
+    background-color: #202b3b;
+    border-radius: 20px;
+    width: 14vw;
+    height: 10vw;
+    margin-left: 2vw;
+    align-content: center;
+}
+
+.Voltage{
+    float: inline-start;
+    border: 1px;
+    background-color: #202b3b;
+    border-radius: 20px;
+    width: 14vw;
+    height: 10vw;
+    margin-left: 1vw;
+    align-content: center;
+}
+
+.LastUpdate{
+    border: 1px;
+    background-color: #202b3b;
+    border-radius: 20px;
+    width: 29vw;
+    height: 11vh;
+    margin-left: 2vw;
+    align-content: center;
+    
+}
+
+.Hour{
+    float: left;
+    margin-top: 0%;
+}
+
+.Divider{
+    float: inline-start;
+    margin-top: 0%;
+}
+
+.Minute{
+    float: inline-start;
+    margin-top: 0%;
+}
+
 @media screen and (max-width: 400px) and (max-height: 1000px) {
     .Menu {
         display: none;
