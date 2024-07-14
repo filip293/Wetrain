@@ -129,8 +129,9 @@
 }
 
 .Sun-Moon-ProgressBarAndText {
+    scale: 80%;
     display: flex;
-    top: calc(50% + 11vh);
+    top: calc(50% + 11.3vh);
     position: relative;
     align-items: center;
 }
