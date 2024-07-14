@@ -17,12 +17,20 @@ const database = getDatabase(app);
 const temperatureRef = ref(database, "Temperature1");
 const humidityRef = ref(database, "Humidity1");
 const pressureRef = ref(database, "Pressure1");
+const batteryRef = ref(database, "Battery1");
+const hourRef = ref(database, "Hours1");
+const minuteRef = ref(database, "Minutes1");
+const voltageRef = ref(database, "Voltage1");
 
 const temperatureElement = document.getElementById("temperatureValue");
 const humidityElementPC = document.getElementById("humidityValuePC");
 const humidityElementPhone = document.getElementById("humidityValuePhone");
 const pressureElement = document.getElementById("pressureValue");
 const feelsLikeElement = document.getElementById("feelsLikeValue");
+const batteryElement = document.getElementById("batteryValueContent");
+const hourElement = document.getElementById("hourValueContent");
+const minuteElement = document.getElementById("minuteValueContent");
+const voltageElement = document.getElementById("voltageValueContent");
 
 let lastHumidityValue = null;
 
@@ -96,6 +104,26 @@ onValue(pressureRef, (snapshot) => {
     const pressureValue = snapshot.val();
     let pressure = parseInt(pressureValue / 100);
     pressureElement.textContent = pressure;
+});
+
+onValue(batteryRef, (snapshot) => {
+    const batteryValue = snapshot.val();
+    batteryElement.textContent = batteryValue;
+});
+
+onValue(hourRef, (snapshot) => {
+    const hourValue = snapshot.val();
+    hourElement.textContent = hourValue;
+});
+
+onValue(minuteRef, (snapshot) => {
+    const minuteValue = snapshot.val();
+    minuteElement.textContent = minuteValue;
+});
+
+onValue(voltageRef, (snapshot) => {
+    const voltageValue = snapshot.val();
+    voltageElement.textContent = voltageValue;
 });
 
 window.addEventListener("resize", updateHumidityStyles);
