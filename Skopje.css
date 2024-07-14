@@ -52,6 +52,27 @@
     font-weight: bold;
 }
 
+.Sunrise{
+    position: absolute;
+    color: #f0f1f1;
+    font-size: 1.5vw;
+    left: 2.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    top: calc(55% + 9.5vh);
+}
+
+.Sunset{
+    position: absolute;
+    color: #f0f1f1;
+    font-size: 1.5vw;
+    left: 84%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    top: calc(50% + 12vh);
+}
+
+
 .BG {
     background: #0b131e;
 }
@@ -70,7 +91,7 @@
 .chanceOfRain {
     position: absolute;
     left: 15%;
-    top: calc(12% + 3vw);
+    top: calc(12% + 6vh);
     font-size: 1vw;
     color: #8e939b;
     white-space: nowrap;
@@ -96,7 +117,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     height: 2px;
-    width: 95%;
+    width: 100%;
     background-color: #ffffff;
 }
   
@@ -104,7 +125,7 @@
     position: relative;
     width: 64%;
     height: 80px;
-    top: calc(50% + 6vw);
+    top: calc(50% + 9.5vh);
     left: 9vw;
     overflow: hidden;
 }

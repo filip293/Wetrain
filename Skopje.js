@@ -145,9 +145,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
         const sunriseTimestamp = data.sys.sunrise * 1000;
         const sunsetTimestamp = data.sys.sunset * 1000;
         const chanceOfRain = data.rain ? data.rain["1h"] : 0;
-
-        const sunriseTime = new Date(sunriseTimestamp).toLocaleTimeString();
-        const sunsetTime = new Date(sunsetTimestamp).toLocaleTimeString();
+        const options = { hour: '2-digit', minute: '2-digit' };
+        const sunriseTime = new Date(sunriseTimestamp).toLocaleTimeString([], options);
+        const sunsetTime = new Date(sunsetTimestamp).toLocaleTimeString([], options);
 
         weatherDescriptionContainer.innerHTML = `Weather: ${weatherDescription}`;
         sunriseTimeContainer.innerHTML = `${sunriseTime}`;
