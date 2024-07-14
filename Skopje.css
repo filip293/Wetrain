@@ -101,7 +101,7 @@
 .Info {
     position: relative;
     width: 50%;
-    height: 45vh;
+    height: 46.4vh;
     background-color: #202b3b;
     margin: 2%;
     border-radius: 20px;
@@ -130,7 +130,7 @@
 
 .Sun-Moon-ProgressBarAndText {
     display: flex;
-    top: calc(50% + 12vh);
+    top: calc(50% + 11vh);
     position: relative;
     align-items: center;
 }
