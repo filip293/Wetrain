@@ -589,7 +589,8 @@
         background: linear-gradient(to bottom right, #333e6b, #566096);
         background-size: cover;
         background-attachment: fixed;
-        height: 100vh;
+        height: 100dvh;
+        width: auto;
     }
     .Temperature {
         position: absolute;
@@ -649,8 +650,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 180px;
+        width: 200px;
         height: 120px;
+        left: 1vw;
+        top: 360px;
     }
     .AdditionalInfo {
         display: none;
@@ -667,14 +670,18 @@
         margin: 2%;
         border-radius: 20px;
         transform: translate(5%, 145%);
+        display: flex;
     }
     .MobileFeelsLike {
         position: absolute;
-        width: 180px;
-        height: 120px;
+        right: 3vw;
+        top: 370px;
+        width: 200px;
+        height: 120px;;
         background-color:rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
+        display: flex;
     }
     .MobileSunMoon {
         position: absolute;
@@ -708,7 +715,7 @@
     .FeelsLike{
         position: relative;
         z-index: 1;
-        left: 0%;
+        left: 34%;
         top: 9vw;
         font-size: 7vw;
         text-align: center;
@@ -736,7 +743,7 @@
         margin: 2%;
         border-radius: 20px;
         right: 3vw;
-        top: 360px;
+        top: 370px;
     }
 
     .MobileHumidity {
@@ -763,7 +770,7 @@
         margin: 2%;
         border-radius: 20px;
         right: 2vw;
-        top: 360px;
+        top: 370px;
     }
 
     .MobileHumidity {
@@ -786,7 +793,7 @@
         margin: 2%;
         border-radius: 20px;
         right: 5vw;
-        top: 360px;
+        top: 370px;
     }
 
     .MobileHumidity {
@@ -802,7 +809,7 @@
         position: absolute;
         width: 91%;
         height: 17vh;
-        left: 0%;
+        left: 2%;
         background-color: rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
