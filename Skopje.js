@@ -26,11 +26,17 @@ const temperatureElement = document.getElementById("temperatureValue");
 const humidityElementPC = document.getElementById("humidityValuePC");
 const humidityElementPhone = document.getElementById("humidityValuePhone");
 const pressureElement = document.getElementById("pressureValue");
+const pressureElementMobile = document.getElementById("pressureValueMobile");
 const feelsLikeElement = document.getElementById("feelsLikeValue");
+const feelsLikeElementMobile = document.getElementById("feelsLikeValueMobile");
 const batteryElement = document.getElementById("batteryValueContent");
 const hourElement = document.getElementById("hourValueContent");
 const minuteElement = document.getElementById("minuteValueContent");
 const voltageElement = document.getElementById("voltageValueContent");
+const sunriseTimeElement = document.getElementById("sunrise-time");
+const sunsetTimeElement = document.getElementById("sunset-time");
+const sunriseTimeElementMobile = document.getElementById("sunrise-time-mobile");
+const sunsetTimeElementMobile = document.getElementById("sunset-time-mobile");
 
 let lastHumidityValue = null;
 
@@ -53,18 +59,29 @@ function updateHumidityStyles() {
 }
 
 function calculateFeelsLike(T, RH) {
-    var T_F = (T * 9/5) + 32;
+    var T_F = (T * 9 / 5) + 32;
     var c1 = -42.379, c2 = 2.04901523, c3 = 10.14333127, c4 = -0.22475541;
     var c5 = -6.83783e-3, c6 = -5.481717e-2, c7 = 1.22874e-3, c8 = 8.5282e-4, c9 = -1.99e-6;
 
     var HI_F = c1 + (c2 * T_F) + (c3 * RH) + (c4 * T_F * RH) +
-               (c5 * T_F * T_F) + (c6 * RH * RH) +
-               (c7 * T_F * T_F * RH) + (c8 * T_F * RH * RH) +
-               (c9 * T_F * T_F * RH * RH);
+        (c5 * T_F * T_F) + (c6 * RH * RH) +
+        (c7 * T_F * T_F * RH) + (c8 * T_F * RH * RH) +
+        (c9 * T_F * T_F * RH * RH);
 
-    var HI_C = (HI_F - 32) * 5/9;
+    var HI_C = (HI_F - 32) * 5 / 9;
 
     return Math.round(HI_C);
+}
+
+function calculateAndDisplayFeelsLike() {
+    const temperatureValue = parseFloat(temperatureElement.textContent);
+    const humidityValue = parseFloat(humidityElementPC.textContent);
+
+    if (!isNaN(temperatureValue) && !isNaN(humidityValue)) {
+        const feelsLike = calculateFeelsLike(temperatureValue, humidityValue);
+        feelsLikeElement.innerHTML = `${feelsLike}<sup>°C</sup>`;
+        feelsLikeElementMobile.innerHTML = `${feelsLike}<sup>°C</sup>`;
+    }
 }
 
 onValue(temperatureRef, (snapshot) => {
@@ -75,7 +92,7 @@ onValue(temperatureRef, (snapshot) => {
 
 onValue(humidityRef, (snapshot) => {
     let humidityValue = snapshot.val();
-    
+
     humidityValue = Math.min(humidityValue, 100);
 
     if (lastHumidityValue !== null && lastHumidityValue < 90 && humidityValue >= 100) {
@@ -90,25 +107,16 @@ onValue(humidityRef, (snapshot) => {
     calculateAndDisplayFeelsLike();
 });
 
-function calculateAndDisplayFeelsLike() {
-    const temperatureValue = parseFloat(temperatureElement.textContent);
-    const humidityValue = parseFloat(humidityElementPC.textContent);
-
-    if (!isNaN(temperatureValue) && !isNaN(humidityValue)) {
-        const feelsLike = calculateFeelsLike(temperatureValue, humidityValue);
-        feelsLikeElement.innerHTML = `${feelsLike}<sup>°C</sup>`;
-    }
-}
-
 onValue(pressureRef, (snapshot) => {
     const pressureValue = snapshot.val();
     let pressure = parseInt(pressureValue / 100);
     pressureElement.textContent = pressure;
+    pressureElementMobile.textContent = pressure;
 });
 
 onValue(batteryRef, (snapshot) => {
     const batteryValue = snapshot.val();
-    batteryElement.textContent = batteryValue;
+    batteryElement.textContent = `${batteryValue}%`;
 });
 
 onValue(hourRef, (snapshot) => {
@@ -133,8 +141,6 @@ const apiKey = "763c113d8dc10a307631d99b3c8b52ef";
 const city = "Skopje";
 
 const weatherDescriptionContainer = document.getElementById("weather-description");
-const sunriseTimeContainer = document.getElementById("sunrise-time");
-const sunsetTimeContainer = document.getElementById("sunset-time");
 const chanceOfRainContainer = document.getElementById("chanceOfRain");
 const weatherImage = document.getElementById("weather-image");
 
@@ -150,8 +156,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
         const sunsetTime = new Date(sunsetTimestamp).toLocaleTimeString([], options);
 
         weatherDescriptionContainer.innerHTML = `Weather: ${weatherDescription}`;
-        sunriseTimeContainer.innerHTML = `${sunriseTime}`;
-        sunsetTimeContainer.innerHTML = `${sunsetTime}`;
+        sunriseTimeElement.innerHTML = `${sunriseTime}`;
+        sunsetTimeElement.innerHTML = `${sunsetTime}`;
+        sunriseTimeElementMobile.innerHTML = `${sunriseTime}`;
+        sunsetTimeElementMobile.innerHTML = `${sunsetTime}`;
         chanceOfRainContainer.innerHTML += `<br>Chance of Rain: ${chanceOfRain}%`;
 
         const currentTime = new Date().getTime();
@@ -184,7 +192,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 
         weatherImage.src = svgPath;
 
-        // Calculate percentage of day and night passed
         const sunrise = moment(sunriseTimestamp);
         const sunset = moment(sunsetTimestamp);
         const now = moment();
@@ -197,23 +204,33 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
             const elapsedDaytime = now.diff(sunrise);
             dayPercentage = (elapsedDaytime / totalDaytime) * 100;
         } else {
-            const totalNighttime = moment(sunriseTimestamp + 86400000).diff(sunset); // Next day's sunrise
+            const totalNighttime = moment(sunriseTimestamp + 86400000).diff(sunset);
             const elapsedNighttime = now.isBefore(sunrise) ? now.diff(sunset.clone().subtract(1, 'days')) : now.diff(sunset);
             nightPercentage = (elapsedNighttime / totalNighttime) * 100;
         }
+
         const sunElement = document.querySelector('.sun');
         const moonElement = document.querySelector('.moon');
+        const sunElement2 = document.querySelector('.sun2');
+        const moonElement2 = document.querySelector('.moon2');
+        
         sunElement.style.left = `${dayPercentage.toFixed(2)}%`;
         moonElement.style.left = `${nightPercentage.toFixed(2)}%`;
-        console.log(`${dayPercentage.toFixed(2)}`)
-
-        if(`${dayPercentage.toFixed(2)}` == 0.00){
+        sunElement2.style.left = `${dayPercentage.toFixed(2)}%`;
+        moonElement2.style.left = `${nightPercentage.toFixed(2)}%`;
+        
+        if (dayPercentage.toFixed(2) == 0.00) {
             sunElement.style.display = "none";
             moonElement.style.display = "block";
-        }else{
+            moonElement2.style.display = "block";
+            sunElement2.style.display = "none";
+        } else {
             sunElement.style.display = "block";
             moonElement.style.display = "none";
+            moonElement2.style.display = "none";
+            sunElement2.style.display = "block";
         }
+        
 
     })
     .catch(error => console.error("Error fetching weather data:", error));

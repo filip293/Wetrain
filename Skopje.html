@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="icon" href="wetrainn.png" type="image/x-icon" />
-        <meta name="color-scheme" content="light only">
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <meta name="color-scheme" content="dark only">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Track weather information for Skopje from my diy weather stations.">
-        <title>Wetrain Skopje</title>
+        <meta name="description" content="Track weather information for Skopje in the Zelezara district from community-driven weather stations.">
+        <title>Wetrain Skopje Zelezara</title>
         <link rel=stylesheet type="text/css" href="Skopje.css">
         <body class="BG">
         <script type="module" src="Skopje.js"></script>
@@ -16,6 +16,7 @@
 
     <div>
     <h1 class="City_TXT">Skopje</h1>
+    <h2 class="Settlement_TXT">Zelezara</h2>
     <div class="chanceOfRain" id="chanceOfRain"></div>
     <div class="Temperature"  id="temperatureValue"></div>
     </div>
@@ -36,7 +37,12 @@
     <div class="Info">
         <img src="Humidity.png" class="HumidityIco"/>
         <p class="Humidity" id="humidityValuePC"></p>
+        <p class="Pressure"  id="pressureValue"></p>
+        <p class="FeelsLike"  id="feelsLikeValue"></p>
         <p class="HumidityTXT">Humidity</p>
+        <p class="FeelsLikeTXT">FeelsLike</p>
+        <p class="PressureTXT">Pressure</p>
+        <p class="PressureUnit">hPa</p>
         <div class="Sun-Moon-ProgressBarAndText">
             <p class="Sunrise" id="sunrise-time"></p>
             <p class="Sunset" id="sunset-time"></p>
@@ -48,27 +54,45 @@
         </div>
     </div>
 
-    <div class="InfoForPhone1">
-        <img src="Humidity.png" class="HumidityIco"/>
-        <p class="Humidity" id="humidityValuePhone"></p>
-        <p class="HumidityTXT">Humidity</p>
+
+    <div class="MobileInfo">
+        <div class="MobileHumidity">
+            <img src="Humidity.png" class="HumidityIco" alt="Humidity Icon"/>
+            <p class="Humidity" id="humidityValuePhone"></p>
+            <p class="HumidityTXT">Humidity</p>
+        </div>
+        <div class="MobileFeelsLike">
+            <p class="FeelsLike" id="feelsLikeValueMobile"></p>
+            <p class="FeelsLikeTXT">FeelsLike</p>
+        </div>
+        <div class="MobileSunMoon">
+            <p class="Sunrise" id="sunrise-time-mobile"></p>
+            <p class="Sunset" id="sunset-time-mobile"></p>
+            <div class="sun-moon-container">
+                <div class="sun2"></div>
+                <div class="moon2"></div>
+                <div class="line2"></div>
+            </div>
+        </div>
+        <div class="MobilePressure">
+            <p class="Pressure" id="pressureValueMobile"></p>
+            <p class="PressureTXT">Pressure</p>
+            <p class="PressureUnit">hPa</p>
+        </div>
     </div>
 
-
-    <p class="Pressure"  id="pressureValue"></p>
-    <p class="FeelsLike"  id="feelsLikeValue"></p>
 
 
     
     <div class="Menu">
     <a href="https://wetrainn.netlify.app/" class="BGimage">
-        <img src="Wetrainn.png" alt="buttonpng" />
+        <img src="Wetrainn.png" alt="buttonpng" alt="Home Button"/>
     </a>
     
     
     <div class="City">
         <a href="https://wetrainn.netlify.app/City.html">
-            <img src="City.png" alt="buttonpng" />
+            <img src="City.png" alt="buttonpng" alt="Cities Button"/>
         </a>
     </div>
 
