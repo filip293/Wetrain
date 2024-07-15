@@ -461,7 +461,6 @@
         left: 32%;
         top: 1%;
     }
-
     .FeelsLikeTXT {
         left: 30%;
         top: 2vw;
@@ -510,7 +509,6 @@
     }
     .MobileInfo {
         display: block;
-
     }
     .MobilePressure {
         position: relative;
@@ -534,7 +532,6 @@
         white-space: nowrap;
         font-family: Arial, Helvetica, sans-serif;
     }
-
     .MobilePressure .PressureTXT {
         position: absolute;
         z-index: 1;
@@ -547,7 +544,6 @@
         font-weight: bold;
         opacity: 0.7;
     }
-
     .MobilePressure .PressureUnit {
         position: absolute;
         z-index: 1;
@@ -560,13 +556,12 @@
         font-weight: bold;
         opacity: 0.7;
     }
-
     .MobileFeelsLike {
         position: absolute;
         right: 3vw;
         top: 370px;
         width: 200px;
-        height: 120px;;
+        height: 120px;
         background-color:rgba(32, 43, 59, 0.2);
         margin: 2%;
         border-radius: 20px;
@@ -600,8 +595,7 @@
         font-size: 4vw;
         position: absolute;
     }
-
-    .FeelsLike{
+    .FeelsLike {
         position: relative;
         z-index: 1;
         left: 34%;
@@ -611,7 +605,6 @@
         color: #ffffff;
         white-space: nowrap;
         font-family: Arial, Helvetica, sans-serif;
-
     }
 }
 
@@ -619,65 +612,21 @@
     .Forcast {
         top: 50px;
     }
-
-
 }
 
 @media screen and (max-width: 450px) {
     .MobileFeelsLike {
-        position: absolute;
         width: 43%;
         height: 120px;
-        margin: 2%;
-        border-radius: 20px;
         right: 3vw;
-        top: 370px;
     }
-
     .MobileHumidity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 45%;
         left: 1vw;
-        height: 120px;
-        top: 370px;
     }
-
-    .FeelsLike{
+    .FeelsLike {
         top: 9vw;
     }
-
-    .MobileSunMoon {
-        height: 130px;
-    }
-
-    .MobilePressure {
-        position: relative;
-        width: 43%;
-        height: 120px;
-        left: 0vw;
-        top: 513px;
-    }
-    .MobilePressure .Pressure {
-        left: 34%;
-        top: 7vw;
-        font-size: 7vw;
-    }
-
-    .MobilePressure .PressureTXT {
-        left: 30%;
-        top: 2.7vw;
-        font-size: 4vw;
-    }
-
-    .MobilePressure .PressureUnit {
-        left: 67%;
-        top: 15vw;
-        font-size: 3vw;
-    }
-
-
 }
 
 @media screen and (max-width: 400px) {
@@ -685,117 +634,39 @@
         top: 60px;
     }
     .MobileFeelsLike {
-        position: absolute;
         width: 45%;
-        height: 120px;
-        margin: 2%;
-        border-radius: 20px;
         right: 2vw;
-        top: 370px;
     }
-
     .MobileHumidity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 45%;
         left: 0vw;
-        height: 120px;
-        top: 370px;
     }
-
-    .MobileSunMoon {
-        height: 130px;
-    }
-
     .MobilePressure {
-        position: relative;
-        width: 43%;
-        height: 120px;
-        left: 0vw;
         top: 513px;
     }
     .MobilePressure .Pressure {
-        left: 34%;
         top: 10vw;
-        font-size: 7vw;
     }
-
-    .MobilePressure .PressureTXT {
-        left: 30%;
-        top: 2.7vw;
-        font-size: 4vw;
-    }
-
     .MobilePressure .PressureUnit {
-        left: 63%;
         top: 18vw;
-        font-size: 3vw;
     }
-
 }
 
 @media screen and (max-width: 360px) {
     .MobileFeelsLike {
-        position: absolute;
         width: 43%;
-        height: 120px;
-        margin: 2%;
-        border-radius: 20px;
-        right: 3vw;
         top: 340px;
     }
-
     .MobileHumidity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 48%;
-        left: 0vw;
-        height: 120px;
         top: 340px;
     }
-
     .MobileSunMoon {
-        position: absolute;
         width: 91.5%;
-        height: 120px;
-        left: 2%;
-        background-color: rgba(32, 43, 59, 0.2);
-        margin: 2%;
-        border-radius: 20px;
         top: 470px;
-        align-items: center;
     }
-
     .MobilePressure {
-        left: 0vw;
-        top: 450px;
-    }
-
-    .MobilePressure {
-        position: relative;
         width: 160px;
-        height: 120px;
-        left: 0vw;
-        top: 470px;
+        top: 480px;
     }
-    .MobilePressure .Pressure {
-        left: 34%;
-        top: 10vw;
-        font-size: 7vw;
-    }
-
-    .MobilePressure .PressureTXT {
-        left: 30%;
-        top: 2.7vw;
-        font-size: 4vw;
-    }
-
-    .MobilePressure .PressureUnit {
-        left: 63%;
-        top: 18vw;
-        font-size: 3vw;
-    }
-
 }
