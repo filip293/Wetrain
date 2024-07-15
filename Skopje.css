@@ -185,7 +185,8 @@
     background-color:rgba(32, 43, 59, 0.3);
     margin: 2%;
     border-radius: 20px;
-    transform: translate(5%, 240%);
+    left: 3vw;
+    top: 350px;
     display: none;
 }
 
@@ -209,7 +210,7 @@
     top: 3.2vw;
     font-size: 3vw;
     text-align: center;
-    color: #f0f1f1;
+    color: #ffffff;
     white-space: nowrap;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -429,66 +430,7 @@
     z-index: 1;
 }
 
-@media screen and (max-width: 400px) and (max-height: 1000px) {
-    .Menu {
-        display: none;
-    }
-    .BG {
-        background: linear-gradient(to bottom right, #333e6b, #566096);
-        height: 98vh;
-    }
-    .Temperature {
-        position: absolute;
-        left: 52%;
-        transform: translateX(-50%);
-        top: calc(35% + 1vw);
-        font-size: 10vw;
-        text-align: center;
-        display: inline-block;
-    }
-    .chanceOfRain {
-        left: 38%;
-        top: calc(5% + 10vw);
-        font-size: 3vw;
-    }
-
-    .Forcast {
-        width: 60%;
-        height: auto;
-        left: 20%;
-        top: calc(5% + 3vw);
-    }
-
-    .HumidityIco {
-        left: 15%;
-        top: 6vw;
-        width: 10%;
-    }
-    
-    .HumidityTXT {
-        left: 30%;
-        top: 2vw;
-        font-size: 4vw;
-    }
-    
-    .Humidity {
-        left: 28%;
-        top: 30%;
-        font-size: 7vw;
-    }
-
-    .Info {
-        display: none;
-    }
-
-    .MobileHumidity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 500px) and (max-height: 1000px) {
+/* @media screen and (max-width: 500px) and (max-height: 1000px) {
     .Menu {
         display: none;
     }
@@ -633,41 +575,235 @@
     }
 
     
-}
+} */
 
-@media screen and (max-width: 500px) and (max-height: 900px) and (min-width: 470px) {
+@media screen and (max-width: 500px) {
+    .Menu {
+        display: none;
+    }
+    .BG {
+        background: linear-gradient(to bottom right, #333e6b, #566096);
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+    }
     .Temperature {
+        position: absolute;
+        left: 52%;
+        transform: translateX(-50%);
+        top: 250px;
         font-size: 10vw;
+        text-align: center;
+        display: inline-block;
     }
     .chanceOfRain {
-        left: 190px;
-        top: 95px;
-        font-size: 15px;
+        left: 38%;
+        top: 70px;
+        font-size: 3vw;
     }
     .City_TXT {
+        font-size: 4vw;
+        left: 32%;
+        top: 1%;
+    }
+
+    .FeelsLikeTXT {
+        left: 30%;
+        top: 2vw;
+        font-size: 4vw;
+    }
+    .Settlement_TXT {
         font-size: 10vw;
+        left: 32%;
+        top: 0%;
     }
     .Forcast {
         width: 60%;
+        height: auto;
         left: 20%;
-        top: 60px;
+        top: 30px;
     }
-    .Temperature {
-        top: 320px;
+    .HumidityIco {
+        left: 15%;
+        top: 6vw;
+        width: 10%;
+    }
+    .HumidityTXT {
+        left: 30%;
+        top: 2vw;
+        font-size: 4vw;
     }
     .Humidity {
+        left: 28%;
+        top: 30%;
         font-size: 7vw;
+    }
+    .Info {
+        display: none;
     }
     .MobileHumidity {
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        top: 430px;
-        left: 17px;
-        transform: none;
-        width: 40%;
-        height: 150px;
+        width: 180px;
+        height: 120px;
     }
-    
+    .AdditionalInfo {
+        display: none;
+    }
+    .MobileInfo {
+        display: block;
+        border: 1px solid red;
+    }
+    .MobilePressure {
+        position: relative;
+        width: 41%;
+        height: 17vh; /* Keep the height fixed to 17vh */
+        background-color: rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        transform: translate(5%, 145%);
+    }
+    .MobileFeelsLike {
+        position: absolute;
+        width: 180px;
+        height: 120px;
+        background-color:rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+    }
+    .MobileSunMoon {
+        position: absolute;
+        width: 91%;
+        height: 17vh; /* Keep the height fixed to 17vh */
+        background-color: rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        top: 500px;
+        align-items: center;
+    }
+    .MobileSunMoon .sun-moon-container {
+        position: relative;
+        top: 18%;
+        left: 22%;
+        width: 49vw;
+    }
+    .MobileSunMoon .Sunrise {
+        top: 32%;
+        left: 2%;
+        font-size: 4vw;
+        position: absolute;
+    }
+    .MobileSunMoon .Sunset {
+        top: 32%;
+        left: 78%;
+        font-size: 4vw;
+        position: absolute;
+    }
+
+    .FeelsLike{
+        position: relative;
+        z-index: 1;
+        left: 35%;
+        top: 9vw;
+        font-size: 7vw;
+        text-align: center;
+        color: #ffffff;
+        white-space: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .Forcast {
+        top: 50px;
+    }
+
+
+}
+
+@media screen and (max-width: 450px) {
+    .MobileFeelsLike {
+        position: absolute;
+        width: 43%;
+        height: 120px;
+        background-color:rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        right: 3vw;
+        top: 360px;
+    }
+
+    .MobileHumidity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        left: 1vw;
+        height: 120px;
+    }
+
+
+}
+
+@media screen and (max-width: 400px) {
+    .Forcast {
+        top: 60px;
+    }
+    .MobileFeelsLike {
+        position: absolute;
+        width: 45%;
+        height: 120px;
+        background-color:rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        right: 2vw;
+        top: 360px;
+    }
+
+    .MobileHumidity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        left: 1vw;
+        height: 120px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .MobileFeelsLike {
+        position: absolute;
+        width: 43%;
+        height: 120px;
+        background-color:rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        right: 5vw;
+        top: 360px;
+    }
+
+    .MobileHumidity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        left: -2vw;
+        height: 120px;
+    }
+
+    .MobileSunMoon {
+        position: absolute;
+        width: 91%;
+        height: 17vh;
+        left: 0%;
+        background-color: rgba(32, 43, 59, 0.3);
+        margin: 2%;
+        border-radius: 20px;
+        top: 490px;
+        align-items: center;
+    }
+
 }
