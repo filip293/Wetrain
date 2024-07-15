@@ -1,7 +1,3 @@
-*{
-    border: 1px solid red;
-}
-
 .City_TXT {
     position: absolute;
     width: 40%;
@@ -186,7 +182,7 @@
     position: relative;
     width: 41%;
     height: 17vh;
-    background-color:rgba(32, 43, 59, 0.3);
+    background-color:rgba(32, 43, 59, 0.2);
     margin: 2%;
     border-radius: 20px;
     left: 3vw;
@@ -434,162 +430,16 @@
     z-index: 1;
 }
 
-/* @media screen and (max-width: 500px) and (max-height: 1000px) {
-    .Menu {
-        display: none;
-    }
-    .BG {
-        background: linear-gradient(to bottom right, #333e6b, #566096);
-        background-size: cover;
-        background-attachment: fixed;
-        height: 100vh;
-    }
-    .Temperature {
-        position: absolute;
-        left: 52%;
-        transform: translateX(-50%);
-        top: calc(35% + 1vw);
-        font-size: 10vw;
-        text-align: center;
-        display: inline-block;
-    }
-    .chanceOfRain {
-        left: 38%;
-        top: calc(5% + 10vw);
-        font-size: 3vw;
-    }
-    .City_TXT {
-        font-size: 4vw;
-        left: 32%;
-        top: 1%;
-    }
-    .FeelsLike{
-        position: absolute;
-        z-index: 1;
-        left: 45%;
-        top: 3.2vw;
-        font-size: 3vw;
-        text-align: center;
-        color: #f0f1f1;
-        white-space: nowrap;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        opacity: 0.9;
-        display: block;
-    }
-
-    .Settlement_TXT {
-        font-size: 10vw;
-        left: 32%;
-        top: 0%;
-    }
-
-    .Forcast {
-        width: 60%;
-        height: auto;
-        left: 20%;
-        top: calc(5% + 10vw);
-    }
-
-    .HumidityIco {
-        left: 15%;
-        top: 6vw;
-        width: 10%;
-    }
-    
-    .HumidityTXT {
-        left: 30%;
-        top: 2vw;
-        font-size: 4vw;
-    }
-    
-    .Humidity {
-        left: 28%;
-        top: 30%;
-        font-size: 7vw;
-    }
-
-    .Info {
-        display: none;
-    }
-
-    .MobileHumidity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .AdditionalInfo {
-        display: none;
-    }
-    .MobileInfo{
-        display: block;
-        height: 100vh;
-    }
-
-    .MobilePressure{
-        position: relative;
-        width: 41%;
-        height: 17vh;
-        background-color:rgba(32, 43, 59, 0.3);
-        margin: 2%;
-        border-radius: 20px;
-        transform: translate(5%, 145%);
-    }
-
-    .MobileFeelsLike{
-        position: relative;
-        width: 41%;
-        height: 17dvh;
-        background-color:rgba(32, 43, 59, 0.3);
-        margin: 2%;
-        border-radius: 20px;
-        transform: translate(130%, 133%);
-    }
-
-    .MobileSunMoon{
-        position: relative;
-        width: 92%;
-        height: 17dvh;
-        background-color:rgba(32, 43, 59, 0.3);
-        margin: 2%;
-        border-radius: 20px;
-        transform: translate(2%, 24dvh);
-        align-items: center;
-    }
-
-    .MobileSunMoon .sun-moon-container{
-        position: relative;
-        top: 18%;
-        left: 22%;
-        width: 49vw;
-    }
-
-    .MobileSunMoon .Sunrise{
-        top: 32%;
-        left: 2%;
-        font-size: 4vw;
-        position: absolute;
-    }
-
-    .MobileSunMoon .Sunset{
-        top: 32%;
-        left: 78%;
-        font-size: 4vw;
-        position: absolute;
-    }
-
-    
-} */
 
 @media screen and (max-width: 500px) {
     .Menu {
         display: none;
     }
     .BG {
-        background: linear-gradient(to bottom right, #333e6b, #566096);
+        background: linear-gradient(to bottom right, #262d47, #566096);
         background-size: cover;
         background-attachment: fixed;
-        height: 100dvh;
+        height: 120dvh;
         width: auto;
     }
     .Temperature {
@@ -653,32 +503,71 @@
         width: 200px;
         height: 120px;
         left: 1vw;
-        top: 360px;
+        top: 370px;
     }
     .AdditionalInfo {
         display: none;
     }
     .MobileInfo {
         display: block;
-        border: 1px solid red;
+
     }
     .MobilePressure {
         position: relative;
-        width: 41%;
-        height: 17vh; /* Keep the height fixed to 17vh */
-        background-color: rgba(32, 43, 59, 0.3);
+        width: 43%;
+        height: 120px;
+        background-color: rgba(32, 43, 59, 0.2);
         margin: 2%;
         border-radius: 20px;
-        transform: translate(5%, 145%);
+        left: 0vw;
+        top: 510px;
         display: flex;
     }
+    .MobilePressure .Pressure {
+        position: relative;
+        z-index: 1;
+        left: 34%;
+        top: 7vw;
+        font-size: 7vw;
+        text-align: center;
+        color: #ffffff;
+        white-space: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .MobilePressure .PressureTXT {
+        position: absolute;
+        z-index: 1;
+        left: 30%;
+        top: 2vw;
+        font-size: 4vw;
+        color: #f0f1f1;
+        white-space: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        opacity: 0.7;
+    }
+
+    .MobilePressure .PressureUnit {
+        position: absolute;
+        z-index: 1;
+        left: 63%;
+        top: 15vw;
+        font-size: 3vw;
+        color: #f0f1f1;
+        white-space: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        opacity: 0.7;
+    }
+
     .MobileFeelsLike {
         position: absolute;
         right: 3vw;
         top: 370px;
         width: 200px;
         height: 120px;;
-        background-color:rgba(32, 43, 59, 0.3);
+        background-color:rgba(32, 43, 59, 0.2);
         margin: 2%;
         border-radius: 20px;
         display: flex;
@@ -686,8 +575,8 @@
     .MobileSunMoon {
         position: absolute;
         width: 91%;
-        height: 17vh; /* Keep the height fixed to 17vh */
-        background-color: rgba(32, 43, 59, 0.3);
+        height: 130px;
+        background-color: rgba(32, 43, 59, 0.2);
         margin: 2%;
         border-radius: 20px;
         top: 500px;
@@ -716,7 +605,7 @@
         position: relative;
         z-index: 1;
         left: 34%;
-        top: 9vw;
+        top: 6vw;
         font-size: 7vw;
         text-align: center;
         color: #ffffff;
@@ -739,7 +628,6 @@
         position: absolute;
         width: 43%;
         height: 120px;
-        background-color:rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
         right: 3vw;
@@ -753,6 +641,40 @@
         width: 45%;
         left: 1vw;
         height: 120px;
+        top: 370px;
+    }
+
+    .FeelsLike{
+        top: 9vw;
+    }
+
+    .MobileSunMoon {
+        height: 130px;
+    }
+
+    .MobilePressure {
+        position: relative;
+        width: 43%;
+        height: 120px;
+        left: 0vw;
+        top: 513px;
+    }
+    .MobilePressure .Pressure {
+        left: 34%;
+        top: 7vw;
+        font-size: 7vw;
+    }
+
+    .MobilePressure .PressureTXT {
+        left: 30%;
+        top: 2.7vw;
+        font-size: 4vw;
+    }
+
+    .MobilePressure .PressureUnit {
+        left: 67%;
+        top: 15vw;
+        font-size: 3vw;
     }
 
 
@@ -766,7 +688,6 @@
         position: absolute;
         width: 45%;
         height: 120px;
-        background-color:rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
         right: 2vw;
@@ -778,8 +699,38 @@
         justify-content: center;
         align-items: center;
         width: 45%;
-        left: 1vw;
+        left: 0vw;
         height: 120px;
+        top: 370px;
+    }
+
+    .MobileSunMoon {
+        height: 130px;
+    }
+
+    .MobilePressure {
+        position: relative;
+        width: 43%;
+        height: 120px;
+        left: 0vw;
+        top: 513px;
+    }
+    .MobilePressure .Pressure {
+        left: 34%;
+        top: 10vw;
+        font-size: 7vw;
+    }
+
+    .MobilePressure .PressureTXT {
+        left: 30%;
+        top: 2.7vw;
+        font-size: 4vw;
+    }
+
+    .MobilePressure .PressureUnit {
+        left: 63%;
+        top: 18vw;
+        font-size: 3vw;
     }
 
 }
@@ -789,32 +740,62 @@
         position: absolute;
         width: 43%;
         height: 120px;
-        background-color:rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
-        right: 5vw;
-        top: 370px;
+        right: 3vw;
+        top: 340px;
     }
 
     .MobileHumidity {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 45%;
-        left: -2vw;
+        width: 48%;
+        left: 0vw;
         height: 120px;
+        top: 340px;
     }
 
     .MobileSunMoon {
         position: absolute;
-        width: 91%;
-        height: 17vh;
+        width: 91.5%;
+        height: 120px;
         left: 2%;
-        background-color: rgba(32, 43, 59, 0.3);
+        background-color: rgba(32, 43, 59, 0.2);
         margin: 2%;
         border-radius: 20px;
-        top: 490px;
+        top: 470px;
         align-items: center;
+    }
+
+    .MobilePressure {
+        left: 0vw;
+        top: 450px;
+    }
+
+    .MobilePressure {
+        position: relative;
+        width: 160px;
+        height: 120px;
+        left: 0vw;
+        top: 470px;
+    }
+    .MobilePressure .Pressure {
+        left: 34%;
+        top: 10vw;
+        font-size: 7vw;
+    }
+
+    .MobilePressure .PressureTXT {
+        left: 30%;
+        top: 2.7vw;
+        font-size: 4vw;
+    }
+
+    .MobilePressure .PressureUnit {
+        left: 63%;
+        top: 18vw;
+        font-size: 3vw;
     }
 
 }
