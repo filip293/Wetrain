@@ -578,7 +578,7 @@
     }
     .MobileInfo{
         display: block;
-        border: 1px solid red;
+        height: 100vh;
     }
 
     .MobilePressure{
