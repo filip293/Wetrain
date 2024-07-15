@@ -116,12 +116,12 @@
 .Info {
     position: relative;
     width: 50%;
-    height: 45vh;
+    height: 46.4vh;
     background-color: #202b3b;
     margin: 2%;
     border-radius: 20px;
     left: 33%;
-    transform: translate(-50%, 105%);
+    transform: translate(-50%, 99%);
     opacity: 1;
 }
   
@@ -144,6 +144,7 @@
 }
 
 .Sun-Moon-ProgressBarAndText {
+    scale: 80%;
     display: flex;
     top: calc(50% + 10vh);
     position: relative;
