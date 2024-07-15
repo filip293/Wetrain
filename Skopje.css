@@ -603,7 +603,7 @@
     .MobileSunMoon{
         position: relative;
         width: 92%;
-        height: 17vh;
+        height: 17dvh;
         background-color:rgba(32, 43, 59, 0.3);
         margin: 2%;
         border-radius: 20px;
