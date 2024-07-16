@@ -80,7 +80,7 @@
     position: absolute;
     color: #f0f1f1;
     font-size: 1.5vw;
-    left: 84%;
+    right: 2.5%;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     opacity: 0.9;
@@ -591,9 +591,10 @@
     }
     .MobileSunMoon .Sunset {
         top: 32%;
-        left: 78%;
+        left: 70vw;
         font-size: 4vw;
         position: absolute;
+        white-space: nowrap;
     }
     .FeelsLike {
         position: relative;
