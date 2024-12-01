@@ -1,27 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
+// ThingSpeak Configuration
+const thingSpeakChannelId = "2768180";
+const thingSpeakReadApiKey = "5T1IE0FVCBNL3HA0";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAuT3vlvLVdOuBZk3dR7tAPvTGF7O5WAEk",
-    authDomain: "weatherstation-bbcb.firebaseapp.com",
-    databaseURL: "https://weatherstation-bbcb-default-rtdb.firebaseio.com",
-    projectId: "weatherstation-bbcb",
-    storageBucket: "weatherstation-bbcb.appspot.com",
-    messagingSenderId: "481270771926",
-    appId: "1:481270771926:web:d7df43fb95f82a872f1977"
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
-const temperatureRef = ref(database, "Temperature1");
-const humidityRef = ref(database, "Humidity1");
-const pressureRef = ref(database, "Pressure1");
-const batteryRef = ref(database, "Battery1");
-const hourRef = ref(database, "Hours1");
-const minuteRef = ref(database, "Minutes1");
-const voltageRef = ref(database, "Voltage1");
-
+// UI Elements
 const temperatureElement = document.getElementById("temperatureValue");
 const humidityElementPC = document.getElementById("humidityValuePC");
 const humidityElementPhone = document.getElementById("humidityValuePhone");
@@ -40,6 +21,7 @@ const sunsetTimeElementMobile = document.getElementById("sunset-time-mobile");
 
 let lastHumidityValue = null;
 
+// Update humidity styles for responsiveness
 function updateHumidityStyles() {
     const isPhone = window.innerWidth <= 600;
 
@@ -59,6 +41,10 @@ function updateHumidityStyles() {
 }
 
 function calculateFeelsLike(T, RH) {
+    if (T < 27) {
+        return Math.round(T);
+    }
+
     var T_F = (T * 9 / 5) + 32;
     var c1 = -42.379, c2 = 2.04901523, c3 = 10.14333127, c4 = -0.22475541;
     var c5 = -6.83783e-3, c6 = -5.481717e-2, c7 = 1.22874e-3, c8 = 8.5282e-4, c9 = -1.99e-6;
@@ -73,69 +59,46 @@ function calculateFeelsLike(T, RH) {
     return Math.round(HI_C);
 }
 
-function calculateAndDisplayFeelsLike() {
-    const temperatureValue = parseFloat(temperatureElement.textContent);
-    const humidityValue = parseFloat(humidityElementPC.textContent);
+// Fetch data from ThingSpeak
+async function fetchDataFromThingSpeak() {
+    const url = `https://api.thingspeak.com/channels/${thingSpeakChannelId}/feeds.json?api_key=${thingSpeakReadApiKey}&results=1`;
+    const response = await fetch(url);
+    const data = await response.json();
 
-    if (!isNaN(temperatureValue) && !isNaN(humidityValue)) {
-        const feelsLike = calculateFeelsLike(temperatureValue, humidityValue);
+    if (data && data.feeds && data.feeds.length > 0) {
+        const latestData = data.feeds[0];
+        updateUI(latestData);
+    }
+}
+
+// Update UI with fetched data
+function updateUI(data) {
+    const temperature = parseFloat(data.field3);
+    const humidity = parseFloat(data.field5);
+    const pressure = Math.round(parseFloat(data.field4));
+    const voltage = parseFloat(data.field2);
+    const time = data.field1;
+
+    temperatureElement.innerHTML = `${temperature}<sup>°C</sup>`;
+    humidityElementPC.textContent = `${humidity}%`;
+    humidityElementPhone.textContent = `${humidity}%`;
+    pressureElement.textContent = pressure;
+    pressureElementMobile.textContent = pressure;
+    voltageElement.textContent = voltage;
+    batteryElement.textContent = `${Math.round(voltage * 10)}%`;
+    hourElement.textContent = `Last Updated: ${time}`;
+
+    if (humidity !== lastHumidityValue) {
+        lastHumidityValue = humidity;
+        updateHumidityStyles();
+    }
+
+    if (!isNaN(temperature) && !isNaN(humidity)) {
+        const feelsLike = calculateFeelsLike(temperature, humidity);
         feelsLikeElement.innerHTML = `${feelsLike}<sup>°C</sup>`;
         feelsLikeElementMobile.innerHTML = `${feelsLike}<sup>°C</sup>`;
     }
 }
-
-onValue(temperatureRef, (snapshot) => {
-    const temperatureValue = snapshot.val();
-    temperatureElement.innerHTML = `${temperatureValue}<sup>°C</sup>`;
-    calculateAndDisplayFeelsLike();
-});
-
-onValue(humidityRef, (snapshot) => {
-    let humidityValue = snapshot.val();
-
-    humidityValue = Math.min(humidityValue, 100);
-
-    if (lastHumidityValue !== null && lastHumidityValue < 90 && humidityValue >= 100) {
-        return;
-    }
-
-    lastHumidityValue = humidityValue;
-
-    humidityElementPC.textContent = humidityValue + '%';
-    humidityElementPhone.textContent = humidityValue + '%';
-    updateHumidityStyles();
-    calculateAndDisplayFeelsLike();
-});
-
-onValue(pressureRef, (snapshot) => {
-    const pressureValue = snapshot.val();
-    let pressure = parseInt(pressureValue / 100);
-    pressureElement.textContent = pressure;
-    pressureElementMobile.textContent = pressure;
-});
-
-onValue(batteryRef, (snapshot) => {
-    const batteryValue = snapshot.val();
-    batteryElement.textContent = `${batteryValue}%`;
-});
-
-onValue(hourRef, (snapshot) => {
-    const hourValue = snapshot.val();
-    hourElement.textContent = `Last Updated: ${hourValue}`;
-});
-
-onValue(minuteRef, (snapshot) => {
-    const minuteValue = snapshot.val();
-    minuteElement.textContent = minuteValue;
-});
-
-onValue(voltageRef, (snapshot) => {
-    const voltageValue = snapshot.val();
-    voltageElement.textContent = voltageValue;
-});
-
-window.addEventListener("resize", updateHumidityStyles);
-updateHumidityStyles();
 
 const apiKey = "763c113d8dc10a307631d99b3c8b52ef";
 const city = "Skopje";
@@ -234,3 +197,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 
     })
     .catch(error => console.error("Error fetching weather data:", error));
+
+// Fetch ThingSpeak data every minute
+setInterval(fetchDataFromThingSpeak, 60000);
+fetchDataFromThingSpeak();
